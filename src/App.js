@@ -11,7 +11,7 @@ class App extends Component {
       monsters: [],
       searchField: "",
     };
-    this.handleChange = this.handleChange.bind(this);
+    //this.handleChange = this.handleChange.bind(this); //-- this can be omitted because of automatic binding
   }
 
   componentDidMount() {
@@ -20,9 +20,9 @@ class App extends Component {
       .then((users) => this.setState({ monsters: users }));
   }
 
-  handleChange(e) {
-    this.setState({ searchField: e.target.value })
-  }
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
+  }; //changed to arrow function to automaticall bind to App context where it is defined
   render() {
     const { monsters, searchField } = this.state;
     const filteredMonsters = monsters.filter((monster) =>
